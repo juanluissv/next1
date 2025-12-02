@@ -1,7 +1,22 @@
-export { default } from 'next-auth/middleware';
+// export { default } from 'next-auth/middleware';
 
+// export const config = {
+//   matcher: ['/properties/add', '/profile', '/properties/saved', '/messages'],
+// };
+
+
+
+import { NextResponse } from 'next/server'
+ 
+// This function can be marked `async` if using `await` inside
+export function proxy(request) {
+  return NextResponse.redirect(new URL('/home', request.url))
+}
+ 
+// Alternatively, you can use a default export:
+// export default function proxy(request: NextRequest) { ... }
+ 
+// See "Matching Paths" below to learn more
 export const config = {
   matcher: ['/properties/add', '/profile', '/properties/saved', '/messages'],
-};
-
-
+}
